@@ -93,14 +93,15 @@ class MainActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("How to Play")
             builder.setMessage(
-                "1.Input 4 different number in text field.\r\n" +
-                        "2.Press \"Check\" button to get hint\r\n" +
-                        "3.The number and position are both correct, show the symbol A.\r\n" +
-                        "  The number is correct, but the position is wrong, show the symbol B.\r\n" +
-                        "4.Guess all correct number to win the game.\r\n" +
-                        "5.If you can't guess all correct number within 10 times, you lose."
+                """
+                |1.Input 4 different number in text field.
+                |2.Press "Check" button to get hint.
+                |3.The number and position are both correct, show the symbol A.
+                |  The number is correct, but the position is wrong, show the symbol B.
+                |4.Guess all correct number to win the game.
+                |5.If you can't guess all correct number within 10 times, you lose.""".trimMargin()
             )
-            builder.setPositiveButton("Confirm") { dialog, whichButton ->
+            builder.setPositiveButton("Confirm") { _, _ ->
                 println("confirm")
             }
             val dialog = builder.create()
@@ -142,7 +143,7 @@ class MainActivity : AppCompatActivity() {
         return "${a}A${b}B"
     }
 
-    fun EditText.onSubmit(func: () -> Unit) {
+    private fun EditText.onSubmit(func: () -> Unit) {
         setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 func()
@@ -151,7 +152,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun submit() {
+    private fun submit() {
         val check = findViewById<Button>(R.id.check)
         check.callOnClick()
     }
