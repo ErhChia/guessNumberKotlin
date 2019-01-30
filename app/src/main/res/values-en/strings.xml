@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kotlin</string>
+    <string name="Title">Title</string>
+    <string name="game_start"> --Game started--\nPlease Enter a 4 digit number</string>
+    <string name="game_restart"> --Game Restarted--\nPlease Enter a 4 digit number</string>
+    <string name="win"> --YOU WIN!--</string>
+    <string name="lose"> --YOU LOSE!--\nThe answer is </string>
+    <string name="hint">Input a 4 digit number</string>
+    <string name="check">Check</string>
+    <string name="info">\?</string>
+    <string name="restart">Restart</string>
+    <string name="information">
+                \|1.Input 4 different number in text field.\n
+                \|2.Press \"Check\" button to get hint.\n
+                \|3.The number and position are both correct, show the symbol A.\n
+                \|  The number is correct, but the position is wrong, show the symbol B.\n
+                \|4.Guess all correct number to win the game.\n
+                \|5.If you can\'t guess all correct number within 10 times, you lose.
+    </string>
+</resources>

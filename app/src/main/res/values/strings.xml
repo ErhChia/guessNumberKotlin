@@ -1,3 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Kotlin</string>
+    <string name="app_name">科特林</string>
+    <string name="Title">標題</string>
+    <string name="game_start"> --遊戲開始--\n請輸入4個不重複的數字</string>
+    <string name="game_restart"> --遊戲開始--\n請輸入4個不重複的數字</string>
+    <string name="win"> --你贏了！--</string>
+    <string name="lose"> --你輸了！-- 答案是：</string>
+    <string name="hint">請輸入4位數字</string>
+    <string name="check">檢查</string>
+    <string name="info">\?</string>
+    <string name="restart">重新開始</string>
+    <string name="information">
+                \|1.Input 4 different number in text field.\n
+                \|2.Press \"Check\" button to get hint.\n
+                \|3.The number and position are both correct, show the symbol A.\n
+                \|  The number is correct, but the position is wrong, show the symbol B.\n
+                \|4.Guess all correct number to win the game.\n
+                \|5.If you can\'t guess all correct number within 10 times, you lose.
+    </string>
 </resources>

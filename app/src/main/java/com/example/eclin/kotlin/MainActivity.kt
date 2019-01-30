@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         var inputAnswer: String
         var attemptTime = 0
         val display = findViewById<EditText>(R.id.display)
-        val restart = findViewById<Button>(R.id.restart)
+        val restart: Button = findViewById(R.id.restart)
 
         generateAnswer()
 
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        display.setText("--Game started--\r\nPlease Enter a 4 digit number")
+        display.setText(R.string.game_start)
 
         answerText = answer.joinToString(separator = "")
 //        display.append("\r\n$answerText")
@@ -54,35 +54,40 @@ class MainActivity : AppCompatActivity() {
         restart.setOnClickListener {
             generateAnswer()
             display.setText("")
-            display.setText("--Game Restarted--\r\nPlease Enter a 4 digit number")
+            display.setText(R.string.game_restart)
             answerText = answer.joinToString(separator = "")
 //            display.append("\r\n$answerText")
             display.scrollTo(0, display.bottom)
             attemptTime = 0
             check.isEnabled = true
             input.setText("")
-            input.hint = "Input a 4 digit number"
+            input.hint = resources.getString(R.string.hint)
         }
 
         check.setOnClickListener {
             if (input.text.toString() != "") {
-                attemptTime++
-                inputAnswer = input.text.toString()
-                val result = verifyAnswer(inputAnswer)
-                input.setText("")
-                input.hint = inputAnswer
-                display.append("\r\n$attemptTime : $inputAnswer -- $result")
-                display.scrollTo(0, display.bottom)
-                if (result == "4A0B") {
-                    display.append("\r\n --YOU WIN!--\r\n\r\n")
-                    check.isEnabled = false
-                }
-                if (attemptTime == 10) {
-                    display.append("\r\n --YOU LOSE!--\r\nThe answer is $answerText")
-                    display.scrollTo(0, display.bottom)
+                if (input.text.length == 4) {
+                    attemptTime++
+                    inputAnswer = input.text.toString()
+                    val result = verifyAnswer(inputAnswer)
                     input.setText("")
                     input.hint = inputAnswer
-                    check.isEnabled = false
+                    display.append("\r\n$attemptTime : $inputAnswer -- $result")
+                    display.scrollTo(0, display.bottom)
+                    if (result == "4A0B") {
+                        display.append("\r\n${resources.getString(R.string.win)}\r\n\r\n")
+                        check.isEnabled = false
+                    }
+                    if (attemptTime == 10) {
+                        display.append("\r\n${resources.getString(R.string.lose)} $answerText")
+                        display.scrollTo(0, display.bottom)
+                        input.setText("")
+                        input.hint = inputAnswer
+                        check.isEnabled = false
+                    }
+                } else {
+                    input.setText("")
+                    input.hint = resources.getString(R.string.hint)
                 }
             }
         }
@@ -93,13 +98,7 @@ class MainActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("How to Play")
             builder.setMessage(
-                """
-                |1.Input 4 different number in text field.
-                |2.Press "Check" button to get hint.
-                |3.The number and position are both correct, show the symbol A.
-                |  The number is correct, but the position is wrong, show the symbol B.
-                |4.Guess all correct number to win the game.
-                |5.If you can't guess all correct number within 10 times, you lose.""".trimMargin()
+                resources.getString(R.string.information).trimMargin()
             )
             builder.setPositiveButton("Confirm") { _, _ ->
                 println("confirm")
